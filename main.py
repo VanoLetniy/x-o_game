@@ -10,20 +10,20 @@ def draw_board(field):  # Рисуем поле в консоли
         print("-" * 13)
 
 
-def take_input(player_token):
+def take_input(player_token):  # Принимаем ввод от пользователя
     valid = False
     while not valid:
         player_answer = input("Куда поставим " + player_token + "? ")
         try:
-            player_answer = int(player_answer)
+            player_answer = int(player_answer)  # Ввод должен быть числом
         except:
             print("Некорректный ввод. Вы уверены, что ввели число?")
             continue
-        if 1 <= player_answer <= 9:
-            if str(field[player_answer - 1]) not in "XO":
-                field[player_answer - 1] = player_token
+        if 1 <= player_answer <= 9:  # Проверка диапозона поля от 1 до 9
+            if str(field[player_answer - 1]) not in "XO": 
+                field[player_answer - 1] = player_token  # Проверка на занятость клетки
                 valid = True
-            else:
+            else: 
                 print("Эта клетка занята!")
         else:
             print("Некорректный ввод. Введите число от 1 до 9.")
